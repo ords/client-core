@@ -1,0 +1,1 @@
+// utils connected to react or "application"
