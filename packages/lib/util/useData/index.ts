@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 
-interface DataResult<T> {
+interface Data<T> {
   data?: T;
   error?: string;
   loading: boolean;
 }
 
-export function usePromise<T>(fetchPromise: Promise<T>) {
+export function useData<T>(fetchPromise: Promise<T>) {
   const isMounted = useRef(true);
-  const [result, setResult] = useState<DataResult<T>>({
+  const [result, setResult] = useState<Data<T>>({
     loading: true,
   });
 

@@ -30,7 +30,10 @@ export class ObservableState<T extends object> {
   mutateSet(valueSet: Partial<T>) {
     this.value = { ...this.value, ...valueSet };
     for (let key of Object.keys(valueSet)) {
-      this.listeners[key]?.forEach((listener) => listener(this.value[key]));
+      // due to lack of type inference i have to manually cast
+      this.listeners[key as keyof T]?.forEach((listener) =>
+        listener(this.value[key as keyof T])
+      );
     }
   }
 }
